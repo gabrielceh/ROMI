@@ -1,30 +1,49 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { create } from 'zustand';
 import type { PatientsState } from './patients.state';
 import type { PatientsActions } from './patients.actions';
 import type { Patient } from '@patients/domain';
 import { patientRepository } from './patientRespository';
+import dayjs from 'dayjs';
 
 export const usePatientsStore = create<PatientsState & PatientsActions>()((set, get) => ({
 	patients: [],
 
 	addPatient: async (patient: Patient) => {
-		await patientRepository.addPatient(patient);
-		set({ patients: [...get().patients, patient] });
+		try {
+			await patientRepository.addPatient(patient);
+			set({ patients: [...get().patients, patient] });
+		} catch (error) {
+			throw new Error('Error al agregar paciente');
+		}
 	},
 
-	updatePatient: async (patient: Patient) => {
-		await patientRepository.updatePatient(patient);
-		set({
-			patients: get().patients.map((p) => (p.id === patient.id ? patient : p)),
-		});
+	updatePatient: async (id, description) => {
+		try {
+			const symptom = { id: crypto.randomUUID(), description: description, date: dayjs().format('YYYY-MM-DDTHH:mm:ss') };
+			await patientRepository.updatePatient(id, symptom);
+			set({
+				patients: get().patients.map((p) => (p.id === id ? { ...p, symptoms: [...p.symptoms, symptom] } : p)),
+			});
+		} catch (error) {
+			throw new Error('Error al actualizar paciente');
+		}
 	},
 
 	getPatientById: async (id: string) => {
-		return await patientRepository.getPatientById(id);
+		try {
+			return await patientRepository.getPatientById(id);
+		} catch (error) {
+			throw new Error('Error al obtener paciente');
+		}
 	},
 
 	getAllPatients: async () => {
-		return await patientRepository.getAllPatients();
+		try {
+			return await patientRepository.getAllPatients();
+		} catch (error) {
+			throw new Error('Error al obtener pacientes');
+		}
 	},
 
 	setPatients: async () => {

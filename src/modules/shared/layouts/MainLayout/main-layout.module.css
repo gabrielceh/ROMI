@@ -37,3 +37,9 @@
 	height: 100%;
 	padding: 1rem;
 }
+
+@media screen and (width > 768px) {
+	.main {
+		max-width: 1920px;
+	}
+}

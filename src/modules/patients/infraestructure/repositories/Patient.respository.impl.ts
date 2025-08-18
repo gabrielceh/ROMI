@@ -1,4 +1,4 @@
-import type { Patient, PatientLocalDataSource, PatientRespository } from '../../domain';
+import type { Patient, PatientLocalDataSource, PatientRespository, Symptom } from '../../domain';
 
 export class PatientRespositoryImpl implements PatientRespository {
 	private patientLocalDataSource: PatientLocalDataSource;
@@ -10,8 +10,8 @@ export class PatientRespositoryImpl implements PatientRespository {
 	async addPatient(patient: Patient): Promise<void> {
 		await this.patientLocalDataSource.addPatient(patient);
 	}
-	async updatePatient(patient: Patient): Promise<void> {
-		await this.patientLocalDataSource.updatePatient(patient);
+	async updatePatient(id: string, newSymptom: Symptom): Promise<void> {
+		await this.patientLocalDataSource.updatePatient(id, newSymptom);
 	}
 
 	async getPatientById(id: string): Promise<Patient | null> {

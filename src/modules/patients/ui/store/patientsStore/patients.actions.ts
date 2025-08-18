@@ -1,10 +1,10 @@
 import type { Patient } from '@patients/domain';
 
 export interface PatientsActions {
-	addPatient: (patient: Patient) => void;
-	updatePatient: (patient: Patient) => void;
-	getPatientById: (id: string) => void;
-	getAllPatients: () => void;
+	addPatient: (patient: Patient) => Promise<void>;
+	updatePatient: (id: string, description: string) => Promise<void>;
+	getPatientById: (id: string) => Promise<Patient | null>;
+	getAllPatients: () => Promise<Array<Patient>>;
 
 	setPatients: () => void;
 }

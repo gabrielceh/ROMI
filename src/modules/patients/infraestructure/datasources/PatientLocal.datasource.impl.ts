@@ -1,4 +1,4 @@
-import type { Patient, PatientLocalDataSource } from '@patients/domain';
+import type { Patient, PatientLocalDataSource, Symptom } from '@patients/domain';
 
 export class PatientLocalDataSourceImpl implements PatientLocalDataSource {
 	private patients: Array<Patient>;
@@ -8,20 +8,24 @@ export class PatientLocalDataSourceImpl implements PatientLocalDataSource {
 	}
 
 	async addPatient(patient: Patient): Promise<void> {
-		const patientFound = this.patients.find((patient) => patient.id === patient.id);
+		const patientFound = this.patients.find((item) => item.id === patient.id);
+
+		console.log('addPatient ->', { patientFound, patient });
 		if (patientFound) return;
 
 		this.patients.push(patient);
 
+		console.log(this.patients);
+
 		localStorage.setItem('patients', JSON.stringify(this.patients));
 	}
 
-	async updatePatient(patient: Patient): Promise<void> {
-		const patientFound = this.patients.find((patient) => patient.id === patient.id);
+	async updatePatient(id: string, newSymptom: Symptom): Promise<void> {
+		const patientFound = this.patients.find((item) => item.id === id);
 		if (!patientFound) return;
 
 		const index = this.patients.indexOf(patientFound);
-		this.patients[index] = patient;
+		this.patients[index].symptoms = [...this.patients[index].symptoms, newSymptom];
 
 		localStorage.setItem('patients', JSON.stringify(this.patients));
 	}
