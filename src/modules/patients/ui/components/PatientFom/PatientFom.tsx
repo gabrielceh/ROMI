@@ -60,7 +60,7 @@ export function PatientFom({ patient, id }: Props) {
 				};
 				await addPatient(newPatient);
 				toast.success('Patiento agregado exitosamente');
-			} catch (error) {
+			} catch {
 				toast.error('Error al agregar paciente');
 			} finally {
 				setLoading(false);
@@ -73,7 +73,7 @@ export function PatientFom({ patient, id }: Props) {
 			setLoading(true);
 			await updatePatient(id, data.symptoms);
 			toast.success('Patiento actualizado exitosamente');
-		} catch (error) {
+		} catch {
 			toast.error('Error al actualizar paciente');
 		} finally {
 			setLoading(false);

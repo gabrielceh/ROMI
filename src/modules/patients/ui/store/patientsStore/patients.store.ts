@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { create } from 'zustand';
 import type { PatientsState } from './patients.state';
 import type { PatientsActions } from './patients.actions';
@@ -13,7 +12,7 @@ export const usePatientsStore = create<PatientsState & PatientsActions>()((set, 
 		try {
 			await patientRepository.addPatient(patient);
 			set({ patients: [...get().patients, patient] });
-		} catch (error) {
+		} catch {
 			throw new Error('Error al agregar paciente');
 		}
 	},
@@ -25,7 +24,7 @@ export const usePatientsStore = create<PatientsState & PatientsActions>()((set, 
 			set({
 				patients: get().patients.map((p) => (p.id === id ? { ...p, symptoms: [...p.symptoms, symptom] } : p)),
 			});
-		} catch (error) {
+		} catch {
 			throw new Error('Error al actualizar paciente');
 		}
 	},
@@ -33,7 +32,7 @@ export const usePatientsStore = create<PatientsState & PatientsActions>()((set, 
 	getPatientById: async (id: string) => {
 		try {
 			return await patientRepository.getPatientById(id);
-		} catch (error) {
+		} catch {
 			throw new Error('Error al obtener paciente');
 		}
 	},
@@ -41,7 +40,7 @@ export const usePatientsStore = create<PatientsState & PatientsActions>()((set, 
 	getAllPatients: async () => {
 		try {
 			return await patientRepository.getAllPatients();
-		} catch (error) {
+		} catch {
 			throw new Error('Error al obtener pacientes');
 		}
 	},
