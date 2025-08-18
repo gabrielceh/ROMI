@@ -1,6 +1,6 @@
-import type { Patient, PatientLocalDataSource, Symptom } from '@patients/domain';
+import type { Patient, PatientDataSource, Symptom } from '@patients/domain';
 
-export class PatientLocalDataSourceImpl implements PatientLocalDataSource {
+export class PatientLocalDataSourceImpl implements PatientDataSource {
 	private patients: Array<Patient>;
 
 	constructor() {

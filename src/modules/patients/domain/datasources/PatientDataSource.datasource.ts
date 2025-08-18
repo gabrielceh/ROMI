@@ -1,6 +1,6 @@
 import type { Patient, Symptom } from '../model';
 
-export interface PatientLocalDataSource {
+export interface PatientDataSource {
 	getAllPatients(): Promise<Array<Patient>>;
 	getPatientById(id: string): Promise<Patient | null>;
 	addPatient(patient: Patient): Promise<void>;

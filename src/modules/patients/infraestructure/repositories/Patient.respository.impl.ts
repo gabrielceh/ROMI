@@ -1,9 +1,9 @@
-import type { Patient, PatientLocalDataSource, PatientRespository, Symptom } from '../../domain';
+import type { Patient, PatientDataSource, PatientRespository, Symptom } from '../../domain';
 
 export class PatientRespositoryImpl implements PatientRespository {
-	private patientLocalDataSource: PatientLocalDataSource;
+	private patientLocalDataSource: PatientDataSource;
 
-	constructor(patientLocalDataSource: PatientLocalDataSource) {
+	constructor(patientLocalDataSource: PatientDataSource) {
 		this.patientLocalDataSource = patientLocalDataSource;
 	}
 
