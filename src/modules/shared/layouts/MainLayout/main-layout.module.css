@@ -1,0 +1,39 @@
+.container {
+	width: 100%;
+	height: 100dvh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+.header {
+	width: 100%;
+	height: 80px;
+	background-color: var(--color-primary);
+}
+.headerContainer {
+	width: 100%;
+	height: 100%;
+	padding: 0.5rem 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.main {
+	width: 100%;
+	height: 100%;
+	background-color: var(--color-slate-100);
+	padding: 1rem;
+}
+
+.footer {
+	width: 100%;
+	height: 150px;
+	background-color: var(--color-secondary);
+}
+.footerContainer {
+	color: var(--color-slate-50);
+	width: 100%;
+	height: 100%;
+	padding: 1rem;
+}
