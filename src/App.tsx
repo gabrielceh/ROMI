@@ -1,13 +1,16 @@
-import { Button } from './components/ui/button';
+import { AppRouter } from '@core/router/AppRouter';
+import { useEffect } from 'react';
+import { MockPatientLocalDataSource } from '@patients/infraestructure/data/mockDataLocal';
 
 function App() {
-	return (
-		<>
-			<div className='text-4xl text-red-400'>ROMI</div>
-			<br />
-			<Button>Botón</Button>
-		</>
-	);
+	useEffect(() => {
+		const patients = localStorage.getItem('patients');
+		if (!patients) {
+			MockPatientLocalDataSource.initLocalStorage();
+		}
+	}, []);
+
+	return <AppRouter />;
 }
 
 export default App;

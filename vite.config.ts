@@ -10,6 +10,8 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
+			'@patients': path.resolve(__dirname, './src/modules/patients'),
+			'@core': path.resolve(__dirname, './src/core'),
 		},
 	},
 });
