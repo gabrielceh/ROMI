@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { usePatientsStore } from '@patients/ui/store/patientsStore';
 import { useSearchParams } from 'react-router';
 import { zodResolver } from '@hookform/resolvers/zod';
-import dayjs from 'dayjs';
+import dayjs from '@core/dayjs/dayjs';
 import styles from './patient-form.module.css';
 import type { Patient } from '@/modules/patients/domain';
 

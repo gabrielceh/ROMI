@@ -3,7 +3,7 @@ import type { PatientsState } from './patients.state';
 import type { PatientsActions } from './patients.actions';
 import type { Patient } from '@patients/domain';
 import { patientRepository } from './patientRespository';
-import dayjs from 'dayjs';
+import dayjs from '@core/dayjs/dayjs';
 
 export const usePatientsStore = create<PatientsState & PatientsActions>()((set, get) => ({
 	patients: [],
