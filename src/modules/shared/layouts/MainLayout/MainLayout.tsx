@@ -19,7 +19,15 @@ export function MainLayout() {
 				<Outlet />
 			</main>
 			<footer className={styles.footer}>
-				<div className={styles.footerContainer}>footer</div>
+				<div className={styles.footerContainer}>
+					<p>
+						Hecho con 💪 por{' '}
+						<a href='https://gabrielcervantes.vercel.app/' target='_blank'>
+							{' '}
+							Gabriel Cervantes
+						</a>
+					</p>
+				</div>
 			</footer>
 		</div>
 	);

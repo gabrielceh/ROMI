@@ -3,6 +3,7 @@ import { usePatientsStore } from '../../store/patientsStore';
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Link } from 'react-router';
+import { PageTitle } from '@/modules/shared/components';
 
 export function PatientsPage() {
 	const getAllPatients = usePatientsStore((state) => state.getAllPatients);
@@ -14,7 +15,7 @@ export function PatientsPage() {
 
 	return (
 		<div className='flex flex-col gap-8'>
-			<h1>Listado de pacientes</h1>
+			<PageTitle title='Listado de pacientes' />
 
 			<section className='w-full max-w-4xl min-w-[350px] mx-auto'>
 				<Table>

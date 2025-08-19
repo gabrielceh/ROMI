@@ -36,11 +36,11 @@ export function PatientFom({ patient, id }: Props) {
 
 	useEffect(() => {
 		patienUseForm.reset({
-			age: patient?.age,
-			name: patient?.name,
+			age: patient?.age || 0,
+			name: patient?.name || '',
 			symptoms: '',
 		});
-	}, [patient]);
+	}, [patient, id]);
 
 	const onSubmit = async (data: PatientFormData) => {
 		if (!patient) {

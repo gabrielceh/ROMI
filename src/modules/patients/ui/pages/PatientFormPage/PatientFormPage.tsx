@@ -3,6 +3,7 @@ import styles from './patient-form-page.module.css';
 import PatientDocumentForm from '../../components/patientFormPage/PatientDocumentForm/PatientDocumentForm';
 import { useNavigate } from 'react-router';
 import { PatientFormContainer } from '../../containers';
+import { PageTitle } from '@/modules/shared/components';
 
 export function PatientFormPage() {
 	const navigate = useNavigate();
@@ -13,7 +14,8 @@ export function PatientFormPage() {
 
 	return (
 		<div className={styles.container}>
-			<h1>Formulario de ingreso</h1>
+			<PageTitle title='Ingreso de paciente' />
+			<p>Digite el documento del paciente para su ingreso</p>
 			<PatientDocumentForm onSubmit={onSubmit} />
 			<PatientFormContainer />
 		</div>
