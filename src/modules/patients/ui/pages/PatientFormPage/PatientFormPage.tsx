@@ -1,6 +1,6 @@
 import styles from './patient-form-page.module.css';
 
-import PatientDocumentForm from '../../components/PatientDocumentForm/PatientDocumentForm';
+import PatientDocumentForm from '../../components/patientFormPage/PatientDocumentForm/PatientDocumentForm';
 import { useNavigate } from 'react-router';
 import { PatientFormContainer } from '../../containers';
 

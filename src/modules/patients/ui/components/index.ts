@@ -1,2 +1,2 @@
-export * from './PatientDocumentForm';
-export * from './PatientFom';
+export * from './patientFormPage/PatientDocumentForm';
+export * from './patientFormPage/PatientFom';

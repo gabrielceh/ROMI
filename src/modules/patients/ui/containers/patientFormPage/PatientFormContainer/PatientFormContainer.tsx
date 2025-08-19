@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
-import { usePatientsStore } from '../../store/patientsStore';
+import { usePatientsStore } from '../../../store/patientsStore';
 import type { Patient } from '@/modules/patients/domain';
-import { PatientFom } from '../../components';
+import { PatientFom } from '../../../components';
 
 export function PatientFormContainer() {
 	const [id, setId] = useState<string | null>(null);

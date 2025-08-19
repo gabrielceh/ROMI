@@ -1,1 +1,1 @@
-export * from './PatientFormContainer';
+export * from './patientFormPage';
