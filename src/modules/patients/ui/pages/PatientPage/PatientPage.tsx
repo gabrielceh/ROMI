@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { usePatientsStore } from '../../store/patientsStore';
 import { PatientInfoSection, SymptomsTable } from '../../components';
+import NotFound from '@/modules/shared/components/NotFound/NotFound';
 
 export function PatientPage() {
 	const params = useParams<{ id: string }>();
@@ -19,8 +20,6 @@ export function PatientPage() {
 
 	const getPatien = async (id: string) => {
 		const patientFound = await getPatientById(id);
-		console.log({ patientFound });
-
 		setPatien(patientFound);
 	};
 
@@ -31,7 +30,9 @@ export function PatientPage() {
 					<PatientInfoSection patient={patient} />
 					<SymptomsTable symptoms={patient.symptoms} />
 				</section>
-			) : null}
+			) : (
+				<NotFound message='No se encontró el paciente' />
+			)}
 		</div>
 	);
 }
