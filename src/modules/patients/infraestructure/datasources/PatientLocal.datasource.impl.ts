@@ -9,14 +9,9 @@ export class PatientLocalDataSourceImpl implements PatientDataSource {
 
 	async addPatient(patient: Patient): Promise<void> {
 		const patientFound = this.patients.find((item) => item.id === patient.id);
-
-		console.log('addPatient ->', { patientFound, patient });
 		if (patientFound) return;
 
 		this.patients.push(patient);
-
-		console.log(this.patients);
-
 		localStorage.setItem('patients', JSON.stringify(this.patients));
 	}
 

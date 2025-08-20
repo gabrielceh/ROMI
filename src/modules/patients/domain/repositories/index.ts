@@ -1,1 +1,1 @@
-export * from './PatienRespository.respository';
+export * from './Patient.respository';

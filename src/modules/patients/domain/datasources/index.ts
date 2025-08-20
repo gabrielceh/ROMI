@@ -1,1 +1,1 @@
-export * from './PatientDataSource.datasource';
+export * from './Patient.datasource';
