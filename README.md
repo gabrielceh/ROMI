@@ -1,69 +1,74 @@
-# React + TypeScript + Vite
+# 🩺 Patients App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación desarrollada con React + TypeScript para la gestión de pacientes.
+Permite el registro de datos personales, síntomas, búsqueda y listado de pacientes por su ID.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- React + TypeScript → Base del proyecto.
+- Zustand → Manejo de estado global ligero y escalable.
+- Day.js → Manipulación y formateo de fechas.
+- clsx → Manejo sencillo y elegante de clases condicionales.
+- shadcn/ui → Componentes de interfaz accesibles y personalizables.
+- Zod → Validación de datos tipada y declarativa.
+- React Hook Form → Manejo de formularios con validaciones eficientes.
+- React Router DOM → Enrutamiento y navegación de la aplicación.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Arquitectura
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+La arquitectura está inspirada en principios de Clean Architecture y Domain Driven Design (DDD).
+Esto permite separar las responsabilidades en capas, favoreciendo la escalabilidad, el testeo y la mantenibilidad del proyecto.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Capas principales:
+
+- Domain → Define las entidades, modelos, repositorios y contratos.
+- Infrastructure → Implementación concreta de repositorios, datasources y conexión con APIs o almacenamiento local.
+- UI → Componentes, páginas y estado (store) relacionados con la interfaz de usuario.
+- Core → Configuraciones globales, librerías y utilidades compartidas (router, dayjs, etc.).
+- Shared → Código reutilizable como hooks, utilidades, enums y componentes globales.
+
+---
+
+## Estructura de directorios
+
+```
+src
+├── assets/                 # Archivos estáticos (imágenes, íconos, fuentes)
+├── components/             # Componentes shadcn globales reutilizables
+├── core/                   # Configuración y utilidades globales
+│   ├── dayjs/              # Configuración global de dayjs
+│   ├── router/             # Definición de rutas principales
+├── lib/                    # Configuración y utilidades globales
+├── modules/                # Módulos funcionales de la app
+│   └── patients/           # Módulo de pacientes
+│   │   ├── domain/         # Reglas de negocio (entidades, modelos, repositorios)
+│   │   │   ├── datasources/
+│   │   │   ├── model/
+│   │   │   └── repositories/
+│   │   ├── infrastructure/ # Implementaciones técnicas
+│   │   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   └── repositories/
+│   │   └── ui/             # Capa de presentación
+│   │       ├── components/ # Componentes específicos del módulo
+│   │       ├── containers/ # Lógica de presentación compuesta
+│   │       ├── pages/      # Páginas asociadas a rutas
+│   │       └── store/      # Estado del módulo (Zustand)
+│   └── shared/             # Código reutilizable en toda la app
+└── main.tsx               # Punto de entrada principal
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Funcionalidades principales
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Registrar pacientes con sus datos y síntomas.
+- Listar pacientes registrados.
+- Buscar paciente por su ID.
+- Validación de formularios con Zod y React Hook Form.
+- Manejo de estado eficiente con Zustand.
+- Enrutamiento modular con React Router DOM.
