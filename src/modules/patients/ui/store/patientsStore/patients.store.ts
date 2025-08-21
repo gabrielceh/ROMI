@@ -43,13 +43,8 @@ export const usePatientsStore = create<PatientsState & PatientsActions>()((set, 
 			set({ patients: patiens });
 			return patiens;
 		} catch {
+			set({ patients: [] });
 			throw new Error('Error al obtener pacientes');
 		}
-	},
-
-	setPatients: async () => {
-		patientRepository.getAllPatients().then((patients) => {
-			set({ patients });
-		});
 	},
 }));

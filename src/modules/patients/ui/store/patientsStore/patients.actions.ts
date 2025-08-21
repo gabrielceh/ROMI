@@ -5,6 +5,4 @@ export interface PatientsActions {
 	updatePatient: (id: string, description: string) => Promise<void>;
 	getPatientById: (id: string) => Promise<Patient | null>;
 	getAllPatients: () => Promise<Array<Patient>>;
-
-	setPatients: () => void;
 }
