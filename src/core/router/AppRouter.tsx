@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router';
 const PatientFormPage = lazy(() => import('@patients/ui/pages').then((module) => ({ default: module.PatientFormPage })));
 const PatientsPage = lazy(() => import('@patients/ui/pages').then((module) => ({ default: module.PatientsPage })));
 const PatientPage = lazy(() => import('@patients/ui/pages').then((module) => ({ default: module.PatientPage })));
+const PageNotFound = lazy(() => import('@/modules/shared/layouts').then((module) => ({ default: module.PageNotFound })));
 
 export function AppRouter() {
 	return (
@@ -15,6 +16,7 @@ export function AppRouter() {
 					<Route index element={<PatientFormPage />} />
 					<Route path='patients' element={<PatientsPage />} />
 					<Route path='patient/:id' element={<PatientPage />} />
+					<Route path='*' element={<PageNotFound />} />
 				</Route>
 			</Routes>
 		</Suspense>
